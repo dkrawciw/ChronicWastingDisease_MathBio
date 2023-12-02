@@ -1,0 +1,2 @@
+# This file is used internally by FFMPEG.
+file 'file:/home/danielkrawciw/Documents/mathBio/ChronicWastingDisease_MathBio/cwdManimSlides/VerificationSlides/media/videos/ModelVerification/480p15/partial_movie_files/ShowBifurcationGraph/2832787250_799789695_1308120557.mp4'
