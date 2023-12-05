@@ -11,7 +11,7 @@ K=55
 
 alpha=4
 gamma=1/2
-delta_c=3
+delta_c=1
 delta_p=1
 eps_p=4
 

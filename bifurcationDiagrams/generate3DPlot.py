@@ -3,7 +3,7 @@ from numpy import genfromtxt
 import numpy as np
 from scipy.interpolate import griddata
 
-roots = genfromtxt('bifurcationDiagrams/bifurcationData.csv', delimiter=',')
+roots = genfromtxt('bifurcationDiagrams/bifurcationData2.csv', delimiter=',')
 
 xi = np.linspace(min(roots[:,0]), max(roots[:,0]), 100)
 yi = np.linspace(min(roots[:,1]), max(roots[:,1]), 100)

@@ -47,8 +47,8 @@ class InverseVMatrix(Scene):
 
 class MatrixProduct(Scene):
     def construct(self):
-        matProd = MathTex(r'FV^{-1} = \begin{bmatrix} ( \frac{\beta_4}{\alpha} - \frac{\epsilon_p \beta_2}{\alpha \delta_p} + \frac{\beta_1}{\delta_c} + \frac{\beta3}{\gamma} ) & (\frac{\beta_4}{\alpha} - \frac{\epsilon_p \beta_2}{\alpha \delta_p} + \frac{\beta_1}{\delta_c}) & \frac{\beta_1}{\delta_c} & \frac{\beta_2}{\delta_p} \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{bmatrix}')
-        eigOne = Tex(r'$\lambda_1 = \frac{\beta_4}{\alpha} - \frac{\epsilon_p \beta_2}{\alpha \delta_p} + \frac{\beta_1}{\delta_c} + \frac{\beta3}{\gamma}$')
+        matProd = MathTex(r'FV^{-1} = \begin{bmatrix} S ( \frac{\beta_2}{\alpha} + \frac{\epsilon_p \beta_4}{\alpha \delta_p} + \frac{\beta_3}{\delta_c} + \frac{\beta_1}{\gamma} ) & S (\frac{\beta_2}{\alpha} + \frac{\epsilon_p \beta_4}{\alpha \delta_p} + \frac{\beta_3}{\delta_c}) & S \frac{\beta_3}{\delta_c} & S \frac{\beta_4}{\delta_p} \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{bmatrix}').scale(0.9)
+        eigOne = Tex(r'$\lambda_1 = S ( \frac{\beta_2}{\alpha} + \frac{\epsilon_p \beta_4}{\alpha \delta_p} + \frac{\beta_3}{\delta_c} + \frac{\beta_1}{\gamma} )$')
         eig234 = Tex(r'$\lambda_2 = \lambda_3 = \lambda_4 = 0$')
 
         eigGroup = VGroup(eigOne, eig234).arrange(DOWN, center=True)
@@ -58,12 +58,64 @@ class MatrixProduct(Scene):
         totalText.move_to(ORIGIN)
 
         box = SurroundingRectangle(eigOne, color=GREEN)
-        R0Text = Text(f'R0 Value', color=GREEN)
+        R0Text = Tex(r'$R_0$ Value', color=GREEN)
         R0Text.next_to(box, RIGHT, buff=0.4)
 
         self.add( totalText, box, R0Text )
 
 class R0Value(Scene):
     def construct(self):
-        R0Eqn = Tex(r'$R_0 = \frac{\delta_p (\beta_4 \delta_c \gamma + \beta_1 \alpha \gamma + \beta_3 \alpha \delta_c) - \epsilon_p \beta_2 \delta_c \gamma}{\alpha \delta_p \delta_c \gamma}$').scale(1.8)
-        self.add( R0Eqn )
+        # R0Eqn1 = Tex(r'$S \frac{\beta_1 \alpha \delta_c \delta_p + \beta_2 \delta_c \delta_p \gamma + \beta_3 \alpha \delta_p \gamma + \beta_4 \delta_c \gamma \epsilon_p}{\alpha \delta_c \delta_p \gamma}$').scale(1.6)
+        # altern = Tex(r'OR', color=BLUE)
+        R0 = Tex(r'$R_0 =$ ', r'$S ($',r'$\frac{\beta_1}{\gamma} $', r' + ', r'$\frac{\beta_2}{\alpha}$', r' + ', r'$\frac{\beta_3}{\delta_c}$', r' + ', r'$\frac{\beta_4 \epsilon_p}{\alpha \delta_p}$', r'$)$').scale(2)
+        # displayEqns = VGroup(R0Eqn1, altern, R0Eqn2).arrange(DOWN, center=True, buff=0.5)
+        self.add( R0 )
+
+class R0ValueAsymp(Scene):
+    def construct(self):
+        R0 = Tex(r'$R_0 =$ ', r'$S ($',r'$\frac{\beta_1}{\gamma} $', r' + ' + r'$\frac{\beta_2}{\alpha}$', r' + ', r'$\frac{\beta_3}{\delta_c}$', r' + ', r'$\frac{\beta_4 \epsilon_p}{\alpha \delta_p}$', r'$)$').scale(2)
+
+        downBrace = Brace(R0[2], direction=DOWN, color=RED)
+        upBrace = Brace(R0[2], direction=UP, color=BLUE)
+        labelDown = downBrace.get_text(r'Rate of becoming\\fully symptomatic')
+        labelUp = upBrace.get_text(r'Asymptomatic\\Transmission\\Rate')
+
+        self.add( R0, downBrace, upBrace, labelDown, labelUp )
+
+class R0ValueInfec(Scene):
+    def construct(self):
+        R0 = Tex(r'$R_0 =$ ', r'$S ($', r'$\frac{\beta_1}{\gamma} $', r' + ', r'$\frac{\beta_2}{\alpha}$', r' + ', r'$\frac{\beta_3}{\delta_c}$', r' + ', r'$\frac{\beta_4 \epsilon_p}{\alpha \delta_p}$', r'$)$').scale(2)
+
+        downBrace = Brace(R0[4], direction=DOWN, color=RED)
+        upBrace = Brace(R0[4], direction=UP, color=BLUE)
+        labelDown = downBrace.get_text(r'Infected\\Death Rate')
+        labelUp = upBrace.get_text(r'Infected\\Transmission\\Rate')
+
+        self.add( R0, downBrace, upBrace, labelDown, labelUp )
+
+class R0ValueCarcass(Scene):
+    def construct(self):
+        R0 = Tex(r'$R_0 =$ ', r'$S ($',r'$\frac{\beta_1}{\gamma} $', r' + ', r'$\frac{\beta_2}{\alpha}$', r' + ', r'$\frac{\beta_3}{\delta_c}$', r' + ', r'$\frac{\beta_4 \epsilon_p}{\alpha \delta_p}$', r'$)$').scale(2)
+
+        downBrace = Brace(R0[6], direction=DOWN, color=RED)
+        upBrace = Brace(R0[6], direction=UP, color=BLUE)
+        labelDown = downBrace.get_text(r'Carcass\\Decay Rate')
+        labelUp = upBrace.get_text(r'Carcass\\Transmission\\Rate')
+
+        self.add( R0, downBrace, upBrace, labelDown, labelUp )
+
+class R0ValuePlants(Scene):
+    def construct(self):
+        R0 = Tex(r'$R_0 =$ ', r'$S ($',r'$\frac{\beta_1}{\gamma} $', r' + ', r'$\frac{\beta_2}{\alpha}$', r' + ', r'$\frac{\beta_3}{\delta_c}$', r' + ', r'$\frac{\beta_4 \epsilon_p}{\alpha \delta_p}$', r'$)$').scale(2)
+
+        downBrace = Brace(R0[8], direction=DOWN, color=RED)
+        upBrace = Brace(R0[8], direction=UP, color=BLUE)
+        labelDown = downBrace.get_text(r'CWD decay\\+\\Death Rate')
+        labelUp = upBrace.get_text(r'Transmission\\Rates\\',r'from', r' and ', r'to',r'\\Plants')
+
+        u1 = Underline(labelUp[1],color=YELLOW)
+        u2 = Underline(labelUp[3],color=YELLOW)
+
+        underlines = VGroup(u1, u2)
+
+        self.add( R0, downBrace, upBrace, labelDown, labelUp, underlines )

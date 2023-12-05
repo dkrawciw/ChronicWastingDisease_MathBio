@@ -4,15 +4,15 @@ from scipy.integrate import solve_ivp
 from numpy import linspace, array, savetxt
 
 # Values to nail down
-IV = [90,10,0,0,0]
+IV = [50,5,0,0,0]
 tspan = [0, 100]
 r=2
-K=55
+K=100
 
 alpha=4
 gamma=1/2
 delta_c=3
-delta_p=1
+delta_p=3
 eps_p=4
 
 # Values that aren't nailed down
@@ -28,12 +28,12 @@ roots = []
 
 for beta3 in beta3Vals:
     for beta4 in beta4Vals:
-        soln = solve_ivp( cwdODE, tspan, IV, args=(r,K,alpha,beta1,beta2,beta3,beta4,gamma,delta_c,delta_p,eps_p), method='RK45' )
+        soln = solve_ivp( cwdODE, tspan, IV, args=(r,K,alpha,beta1,beta2,beta3,beta4,gamma,delta_c,delta_p,eps_p), method='RK23' )
         roots.append( [beta3, beta4, soln.y[0][-1]] )
 
 roots = array( roots )
 
-savetxt('bifurcationDiagrams/bifurcationData.csv', roots, delimiter=',')
+savetxt('bifurcationDiagrams/bifurcationData2.csv', roots, delimiter=',')
 
 # fig = plt.figure()
 # ax = fig.add_subplot(111, projection='3d')
