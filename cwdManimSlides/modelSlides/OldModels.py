@@ -91,8 +91,8 @@ class SecondModelDescribe(Scene):
         dSf = Tex(r'$S_f^{\prime} =$ Susceptible (Femles)')
         dEm = Tex(r'$E_m^{\prime} =$ Exposed (Males)')
         dEf = Tex(r'$E_f^{\prime} =$ Exposed (Females)')
-        dAm = Tex(r'$E_m^{\prime} =$ Asymptomatic (Males)')
-        dAf = Tex(r'$E_f^{\prime} =$ Asymptomatic (Females)')
+        dAm = Tex(r'$A_m^{\prime} =$ Asymptomatic (Males)')
+        dAf = Tex(r'$A_f^{\prime} =$ Asymptomatic (Females)')
         dIm = Tex(r'$I_m^{\prime} =$ Infected (Males)')
         dIf = Tex(r'$I_f^{\prime} =$ Infected (Females)')
 
@@ -118,8 +118,8 @@ class SecondModelCritique1(Scene):
         dSf = Tex(r'$S_f^{\prime} =$ Susceptible (Femles)')
         dEm = Tex(r'$E_m^{\prime} =$ Exposed (Males)')
         dEf = Tex(r'$E_f^{\prime} =$ Exposed (Females)')
-        dAm = Tex(r'$E_m^{\prime} =$ Asymptomatic (Males)')
-        dAf = Tex(r'$E_f^{\prime} =$ Asymptomatic (Females)')
+        dAm = Tex(r'$A_m^{\prime} =$ Asymptomatic (Males)')
+        dAf = Tex(r'$A_f^{\prime} =$ Asymptomatic (Females)')
         dIm = Tex(r'$I_m^{\prime} =$ Infected (Males)')
         dIf = Tex(r'$I_f^{\prime} =$ Infected (Females)')
 
@@ -148,8 +148,8 @@ class SecondModelCritique2(Scene):
         dSf = Tex(r'$S_f^{\prime} =$ Susceptible (Femles)')
         dEm = Tex(r'$E_m^{\prime} =$ Exposed (Males)')
         dEf = Tex(r'$E_f^{\prime} =$ Exposed (Females)')
-        dAm = Tex(r'$E_m^{\prime} =$ Asymptomatic (Males)')
-        dAf = Tex(r'$E_f^{\prime} =$ Asymptomatic (Females)')
+        dAm = Tex(r'$A_m^{\prime} =$ Asymptomatic (Males)')
+        dAf = Tex(r'$A_f^{\prime} =$ Asymptomatic (Females)')
         dIm = Tex(r'$I_m^{\prime} =$ Infected (Males)')
         dIf = Tex(r'$I_f^{\prime} =$ Infected (Females)')
 

@@ -9,27 +9,9 @@ class VerificationIntro(Scene):
         underline = Underline(ttl, color=BLUE)
         self.add(ttl, underline)
 
-class ShowBifurcationGraph(ThreeDScene):
+class Denominators(Scene):
     def construct(self):
-        axes = ThreeDAxes(
-            x_range=[-0.001, 0.1,0.0091], 
-            y_range=[-0.001, 0.1,0.0091], 
-            z_range=[0, 55,1],
-            x_length=7,
-            y_length=7,
-            z_length=7
-        )
-        roots = genfromtxt('bifurcationData.csv', delimiter=',')
-
-        dots = []
-
-        for i in range( len(roots[:,0]) ):
-            dots.append( Dot3D(point=roots[i,:], radius=0.1, color=BLUE) )
-
-        for dot in dots:
-            self.add(dot)
-        
-        self.set_camera_orientation(phi=75 * DEGREES, theta=45*DEGREES, zoom=0.01)
-        self.add(axes)
-        self.begin_ambient_camera_rotation(rate=2)
-        self.wait(2)
+        R0 = Tex(r'$R_0 =$ ', r'$S(\frac{\beta_1}{\gamma} + \frac{\beta_2}{\alpha} + \frac{\beta_3}{\delta_c} + \frac{\beta_4 \epsilon_p}{\alpha \delta_p})$').scale(2)
+        denBrace = Brace(R0[1], direction=DOWN, color=RED)
+        denText = denBrace.get_text(r'$\gamma$, $\alpha$, $\delta_c$, $\delta_p$ $\not= 0$\\Otherwise CWD Will Diverge')
+        self.add( R0, denBrace, denText)

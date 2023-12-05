@@ -7,7 +7,7 @@ from numpy import linspace, array, savetxt
 IV = [50,5,0,0,0]
 tspan = [0, 100]
 r=2
-K=100
+K=55
 
 alpha=4
 gamma=1/2
